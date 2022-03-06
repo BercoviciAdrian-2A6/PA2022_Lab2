@@ -1,43 +1,39 @@
 package com.bercoviciadrianpa2022lab2;
 
-public class Room
-{
-    //static variables & types
-    enum RoomType
-    {
-        HALL,
-        COMPUTER_LAB
-    };
+import java.util.Objects;
 
+public abstract class Room
+{
     //non-static variables
-    private String roomName;
-    private RoomType roomType;
-    private int capacity;
+    protected String roomName;
+    protected int capacity;
     //Constructor
 
-    public Room(String roomName, RoomType roomType, int capacity) {
+    public Room(String roomName, int capacity) {
         this.roomName = roomName;
-        this.roomType = roomType;
         this.capacity = capacity;
     }
 
     //methods
 
+    //force override in each subclass
     @Override
-    public String toString() {
-        return "Room{" +
-                "roomName='" + roomName + '\'' +
-                ", roomType=" + roomType +
-                ", capacity=" + capacity +
-                '}';
+    public abstract String toString();
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+            return true;
+        if (o == null /*|| getClass() != o.getClass()*/ )//this is commented out because the desired behaviour should be able to compare labs and CourseHalls
+            return false;
+
+        Room room = (Room) o;
+        return roomName.equals(room.roomName);//room name is the unique identifier
     }
 
-    public RoomType getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(RoomType roomType) {
-        this.roomType = roomType;
+    public String getRoomName() {
+        return roomName;
     }
 
     public int getCapacity() {
