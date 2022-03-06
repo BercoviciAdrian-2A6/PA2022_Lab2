@@ -2,4 +2,4 @@
 
 Bercovici Adrian 2A6
 
-Compulsory
+Laboratory 2 homework and bonus (complete)
